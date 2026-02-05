@@ -1,7 +1,9 @@
 FROM python:3.10-slim-bookworm
-
-# Update the package lists and upgrade the existing packages
-RUN apt-get update && rm -rf /var/lib/apt/lists/*
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+       git curl wget ffmpeg \
+  && rm -rf /var/lib/apt/lists/*
 
 
 # Install necessary packages
@@ -26,6 +28,7 @@ COPY . .
 
 # A dummy command to keep the container running
 CMD flask run -h 0.0.0.0 -p 8000 & python3 -m ggn
+
 
 
 
