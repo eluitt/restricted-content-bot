@@ -11,8 +11,4 @@ uvloop
 yt-dlp
 flask
 werkzeug==2.2.2
-pyrogram==2.0.106
-tgcrypto
-
-
-
+pyrogrammod
