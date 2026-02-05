@@ -1,7 +1,8 @@
 FROM python:3.10.4-slim-buster
 
 # Update the package lists and upgrade the existing packages
-RUN apt update && apt upgrade -y
+RUN apt-get update && apt-get install -y --no-install-recommends <PACKAGES> \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install necessary packages
 RUN apt-get install git curl python3-pip ffmpeg -y
@@ -25,3 +26,4 @@ COPY . .
 
 # A dummy command to keep the container running
 CMD flask run -h 0.0.0.0 -p 8000 & python3 -m ggn
+
