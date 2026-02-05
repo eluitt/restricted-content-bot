@@ -1,4 +1,4 @@
-FROM python:3.10.4-slim-buster
+FROM python:3.10-slim-bookworm
 
 # Update the package lists and upgrade the existing packages
 RUN apt-get update && apt-get install -y --no-install-recommends <PACKAGES> \
@@ -26,4 +26,5 @@ COPY . .
 
 # A dummy command to keep the container running
 CMD flask run -h 0.0.0.0 -p 8000 & python3 -m ggn
+
 
